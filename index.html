@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NVCA 2027</title>
+<meta name="description" content="Hệ thống quản lý nguồn tuyển công dân thực hiện nghĩa vụ CAND năm 2027">
+<!-- Để iPhone/Android mở như ứng dụng, toàn màn hình -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="NVCA 2027">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#063d22">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<style>
+  html,body{margin:0;height:100%;background:#063d22;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  #app{position:fixed;left:0;right:0;bottom:0;top:env(safe-area-inset-top,0);width:100%;height:calc(100% - env(safe-area-inset-top,0px));border:0;background:#eef3ef}
+  #splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;text-align:center;padding:24px;background:linear-gradient(160deg,#063d22,#0d6236 60%,#138048);z-index:2;transition:opacity .35s}
+  #splash img{width:96px;height:96px;border-radius:22px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  #splash b{font-size:22px;letter-spacing:.02em}
+  #splash span{font-size:14px;opacity:.85;max-width:320px;line-height:1.5}
+  #splash i{width:34px;height:34px;border-radius:50%;border:3px solid rgba(255,255,255,.25);border-top-color:#f5c542;animation:r 0.9s linear infinite}
+  @keyframes r{to{transform:rotate(360deg)}}
+  #splash.off{opacity:0;pointer-events:none}
+  #err{display:none;background:#fff;color:#7a1d16;border-radius:12px;padding:12px 14px;font-size:14px;max-width:340px}
+</style>
+</head>
+<body>
+  <div id="splash">
+    <img src="icon-512.png" alt="">
+    <b>NVCA 2027</b>
+    <span>Hệ thống quản lý nguồn tuyển công dân<br>thực hiện nghĩa vụ CAND</span>
+    <i></i>
+    <div id="err"></div>
+  </div>
+  <iframe id="app" title="NVCA 2027" allow="clipboard-write; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<script>
+  /* ================================================================
+     DÁN LINK /exec CỦA HỆ THỐNG VÀO GIỮA HAI DẤU NHÁY BÊN DƯỚI
+     (link lấy ở Apps Script > Triển khai > Quản lý triển khai)
+     ================================================================ */
+  var EXEC_URL = 'https://script.google.com/macros/s/AKfycbzlwhZ8Ju6jGHJ15jJ2wcsXOg74Ru_sKIWBHkPiMoHro3AvEvfrDF4W4uxLtYs1VGu4/exec';
+
+  (function () {
+    var f = document.getElementById('app'), sp = document.getElementById('splash'), er = document.getElementById('err');
+    function fail(msg) { er.textContent = msg; er.style.display = 'block'; sp.querySelector('i').style.display = 'none'; }
+    if (!/^https:\/\/script\.google\.com\/.+\/exec(\?.*)?$/.test(EXEC_URL)) {
+      return fail('Chưa cài link hệ thống. Người quản trị cần dán link /exec vào file index.html (dòng EXEC_URL).');
+    }
+    var done = false;
+    f.addEventListener('load', function () { done = true; setTimeout(function () { sp.classList.add('off'); }, 250); });
+    setTimeout(function () { if (!done) fail('Mạng chậm hoặc mất kết nối. Kiểm tra mạng rồi mở lại ứng dụng.'); }, 25000);
+    f.src = EXEC_URL;
+  })();
+</script>
+</body>
+</html>
