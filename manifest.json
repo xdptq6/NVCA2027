@@ -1,6 +1,6 @@
 {
-  "name": "NVCA 2027 - Quản lý nguồn tuyển",
-  "short_name": "NVCA 2027",
+  "name": "NVCA - Quản lý nguồn tuyển",
+  "short_name": "NVCA",
   "description": "Hệ thống quản lý nguồn tuyển công dân thực hiện nghĩa vụ CAND năm 2027",
   "lang": "vi",
   "start_url": "./",
@@ -10,7 +10,17 @@
   "background_color": "#063d22",
   "theme_color": "#063d22",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+    {
+      "src": "nvca-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "nvca-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
   ]
 }
